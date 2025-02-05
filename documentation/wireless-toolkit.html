@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/documentation-style.css">
+  <title>Wireless Toolkit</title>
+  <link rel="icon" type="image/png" href="../images/logo60px.png">
+</head>
+
+<body>
+  <header id="main-header">
+    <nav id="navbar">
+      <h1>Wireless Toolkit</h1>
+      <ul>
+        <li class="nav-link"><a href="#introduction">Introduction</a></li>
+        <li class="nav-link"><a href="#requirements">Requirements</a></li>
+        <li class="nav-link"><a href="#features">Features</a></li>
+        <li class="nav-link"><a href="#install-use">Installation and Usage</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <article class="main-article">
+        <p>An open source Wireless Attacks Toolkit could be used to practice different types Wireless Attacks and provide awareness. 
+            It is created for educational purpose only.</p>
+        <ul>
+          <li>Language: Python 3</li>
+          <li>Operating System type : Linux</li>
+          <li>Tested On: Kali Linux 2024</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="requirements">
+      <header>Requirements</header>
+      <article class="main-article">
+        <p>The Wireless-Toolkit folder contains "requirements.txt" file. Its contains all the required python libraries for this tool. 
+            Install them manualy by using:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install [library]</code></pre>
+            </div>
+        </ul>
+        <p>OR use the requirements.txt file and install as:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install -r requirements.txt</code></pre>
+            </div>
+          </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="features">
+      <header>Features</header>
+      <article class="main-article">
+        <h4>1. Change Mode of Wireless Adaptor: </h4>
+        <p>It can be used to change the mode of Wireless adaptor from managed to monitor or monitor to managed accordingly.</p>
+        <h4>2. Change Mac Address of Wireless Adaptor: </h4>
+        <p>It can be used to change the mac address of Wireless adaptor. 
+            It have two option either change mac address to new mac address provided by you or new mac address similar to mac address or bssid of target network. 
+            For second option, tool will list the surronding networks and after selecting the target network, it will convert the mac address of adapter to the mac address or bssid of selected target network.</p>
+        <h4>3. Evil Twin type 1: </h4>
+        <p>Evil Twin attack type 1 against a target network will perform Deauthentication attack on target network and will create a Rogue Access Point that will redirect to captive portal when user try to connect. There will be a lot of option for different captive portal which are listed in captive portal portion. It will then capture all the usernames or password that different use to login to captive portal. 
+            It run continounsly and capture usernames and password until attack is closed by presses "CTRL+C" twice.</p>
+        <p>( Note: It is recommended to use 2 Wireless Adaptors, one for Rogue Access Point and Second for Deauthentication attack and capturing data.)</p>
+        <h4>4. Evil Twin type 2: </h4>
+        <p>Evil Twin attack type 2 is used to capture the password of target network. After selecting the target network, It will capture the handshake file. It the start deauthentication attack on target network and will start the Rogue Access Point that will redirect all users that try to connect to captive portal. It will capture usernames and password and will try to verify the password of target network using handshake file and when correct password is found, attack will be closed and will show the correct password.</p>
+        <p>( Note: It is recommended to use 2 Wireless Adaptors, one for Rogue Access Point and Second for Deauthentication attack and capturing data.)</p>
+        <h4>5. Evil Twin type 3: </h4>
+        <p>Evil Twin type 3 is to create a Rogue Access Point either of a target network by Deauthenticating the target point or just a random network. It will provide internet to user connected to rogue Access Point. It will capture data that user access or visit through this rogue Access Point. It can also created WPA2 encrypted Rogue Access Point.</p>
+        <p>( Note: It is recommended to use different Wireless Adaptors for Rogue Access Point, Deauthentication attack and providing internet.)</p>
+        <h4>6. Captive Portal: </h4>
+        <p>Captive Portal menu is used in Evil Twin type 1 and Evil Twin type 2.Captive Portal menu include 4 different method to setup the captive portal.</p>
+        <ul>
+            <li><b>Captive Portal of Login Page of Website using URL:</b> It requires the url of login page of target website to create the captive portal exactly similar to that login page. It will also ask for name, it could be random and is just to differentiate websites with different name in apache2 folder.</li>
+            <p> <b>Note:</b> You must be connected to internet to create captive portal with url. Captive portal of some websites like FaceBook or Google could not be created using url. So, try using already created captive portal of famous websites.</p>
+            <li><b>Captive Portal Of Wifi network:</b> If your target network is open network and have captive portal for authentication, then you can use this option. It will create captive portal look exactly similar to the captive portal of target network.</li>
+            <li><b>Captive portal of famous websites:</b> It include login pages of 43 famous websites. By selecting one of these,it will create captive portal of that login page of website.</li>
+            <li><b>Want to place your own portal files:</b> If you want to place captive portal created by you, then use this option. First place your captive portal files in a folder and place this folder in "/var/www/html" folder. It will list all folders present in "/var/www/hrml". Select your folder and it will create captive portal using it.</li>
+        </ul>
+
+        </article>
+    </section>
+
+    <section class="main-section" id="install-use">
+      <header>Installation and Usage</header>
+      <article class="main-article">
+        <p>After installing the requirements using "requirements.txt". Run the program using following command:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo python3 main.py</code></pre>
+            </div>
+        </ul>
+        <p>First program will try to install the required linux tools. It will try to install these using "apt" manager. 
+            It your linux don't have "apt" manager then try to install below listed tools manually as without these tools it will not work.</p>
+            <ul>
+                <li>Aircrack-ng</li>
+                <li>Apache2</li>
+                <li>Iptables</li>
+                <li>Hostapd</li>
+                <li>Dnsmasq</li>
+            </ul>
+        </article>
+    </section>
+
+  </main>

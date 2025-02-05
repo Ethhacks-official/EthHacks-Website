@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/documentation-style.css">
+  <title>Phish Hacks</title>
+  <link rel="icon" type="image/png" href="../images/logo60px.png">
+</head>
+
+<body>
+  <header id="main-header">
+    <nav id="navbar">
+      <h1>Phish Hacks</h1>
+      <ul>
+        <li class="nav-link"><a href="#introduction">Introduction</a></li>
+        <li class="nav-link"><a href="#requirements">Requirements</a></li>
+        <li class="nav-link"><a href="#features">Features</a></li>
+        <li class="nav-link"><a href="#install-use">Installation and Usage</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <article class="main-article">
+        <p>An open source Phishing Attacks Toolkit could be used to practice different types phishing attacks and provide awareness. It is created for educational purpose only. Any harm using this tool will be on that person who used this tool for unethical purposes.</p>
+        <ul>
+          <li>Language: Python 3</li>
+          <li>Operating System type : Linux</li>
+          <li>Tested On: Kali Linux 2024, Respberry Pi 4</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="requirements">
+      <header>Requirements</header>
+      <article class="main-article">
+        <p>The Phish-Hacks folder contains "requirements.txt" file. Its contains all the required python libraries for this tool. Install them manualy by using:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install [library]</code></pre>
+            </div>
+        </ul>
+        <p>OR use the requirements.txt file and install as:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install -r requirements.txt</code></pre>
+            </div>
+          </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="features">
+      <header>Features</header>
+      <article class="main-article">
+        <h4>1. Create Phishing Page for within the network: </h4>
+        <p>It will create the Phishing page which could be used for targets within the networks (targets that are connected to same network as of the attacker). It will provide url that can be sent to target and tool will start capturing credentials and will show on screen.</p>
+        <h4>2. Create Phishing Page for outside the network using Port Forwording: </h4>
+        <p>It will create Phishing page which could be used within the network and also against the target that are outside the network (not connected to same network). But you need to configure your router to forword ports in order to make it work. It will provide url that can be sent to target and tool will start capturing credentials and will show on screen.</p>
+        <h4>3. Create Phishing Page outside the network using Localhost.run: </h4>
+        <p>It will create Phishing page which could be used within and outside the network. Localhost.run is free service to expose your Localhost to internet using ssh tunneling. Tool will setup ssh key and then using it will create public url using Localhost.run service. Tool will start capturing credentials and will show on screen.</p>
+        <h4>4. Create Phishing Page outside the network using ngrok: </h4>
+        <p>It will create Phishing page which could be used within and outside the network. Ngrok is one of the famous service to expose your Localhost to internet. Free ngrok token is not recommended for Phishing page as it warns the target before going to phishing page which will reduce the success of phishing. For ngrok, you will need first to signup to ngrok website and will need ngrok auth-token to provide to this tool in order for this attack to work.</p>
+        <h4>5. Create Phishing Page outside the network using serveo: </h4>
+        <p>It will create Phishing page which could be used within and outside the network. Serveo is free service to expose your Localhost to internet using ssh tunneling. It is similar to Localhost.run. Tool will setup ssh key and then using it will create public url using serveo service. Tool will start capturing credentials and will show on screen.</p>
+        <h4>6. Create Phishing Page for your onlne hosting or domain: </h4>
+        <p>It will create Phishing page which could be used for your online hosting and domain. You need to place these file in your online hosting and whenever user login using credentials, the login credentials will be saved in login_data,txt file that will be present in files provided by this tool. If you found that credentials are not being saved in login_data.txt file, try providing all permissions of read, write and execute to login_data.txt file in your online hosting platform.</p>
+        <h4>7. Phishing Page Options: </h4>
+        <p>Phishing Page creation menu is used to create phishing page. It includes 3 different method to setup the phishing page.</p>
+        <ul>
+            <li><b>Phishing Page of Login Page of Website using URL:</b> It requires the url of login page of target website to create the phishing page exactly similar to that login page. It will also ask for name, it could be random and is just to differentiate websites with different name in apache2 folder.</li>
+            <p> <b>Note:</b> You must be connected to internet to create Phishing page with url. Phishing page of some websites like FaceBook or Google could not be created using url. So, try using already created phishing page of famous websites.</p>
+            <li><b>Phishing Page of famous websites:</b> It include login pages of 43 famous websites. By selecting one of these,it will create phishing page of login page of website.</li>
+            <li><b>Want to place your own phishing page files:</b> If you want to place phishing page created by you, then use this option. First place your phishing page files in a folder and place this folder in "/var/www/html" folder. It will list all folders present in "/var/www/hrml". Select your folder and it will create phishing page using it.</li>
+        </ul>
+
+        </article>
+    </section>
+
+    <section class="main-section" id="install-use">
+      <header>Installation and Usage</header>
+      <article class="main-article">
+        <p>After installing the requirements using "requirements.txt". Run the program using following command:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo python3 main.py</code></pre>
+            </div>
+        </ul>
+        <p>First program will try to install the required linux tools. It will try to install these using "apt" manager. 
+            It your linux don't have "apt" manager then try to install below listed tools manually as without these tools it will not work.</p>
+            <ul>
+                <li>Apache2</li>
+            </ul>
+        </article>
+    </section>
+
+  </main>

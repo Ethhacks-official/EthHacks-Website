@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/documentation-style.css">
+  <title>Wireless Protect</title>
+  <link rel="icon" type="image/png" href="../images/logo60px.png">
+</head>
+
+<body>
+  <header id="main-header">
+    <nav id="navbar">
+      <h1>Wireless Protect</h1>
+      <ul>
+        <li class="nav-link"><a href="#introduction">Introduction</a></li>
+        <li class="nav-link"><a href="#requirements">Requirements</a></li>
+        <li class="nav-link"><a href="#options">Options</a></li>
+        <li class="nav-link"><a href="#install-use">Installation and Usage</a></li>
+        <li class="nav-link"><a href="#features">Features</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <article class="main-article">
+        <p>EthHacks Wireless Protect application is an open source application to detect most common wifi or wireless attacks with in the network. 
+          There are two versions of Wireless Protect application. The terminal version and service version which run as service in backgroud and notify when any attack detected.</p>
+        <ul>
+          <li>Language: Python 3</li>
+          <li>Operating System type : Linux</li>
+          <li>Tested On: Kali Linux 2024</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="requirements">
+      <header>Requirements</header>
+      <article class="main-article">
+        <p>The Wireless-Protect folder contains "requirements.txt" file. Its contains all the required python libraries for this tool. Install them manualy by using:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install [library]</code></pre>
+            </div>
+        </ul>
+        <p>OR use the requirements.txt file and install as:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo pip3 install -r requirements.txt</code></pre>
+            </div>
+          </ul>
+
+        <h3>Requirements for Service Version:</h3>
+        <p>In order to run The Wireless-Protect tool as service, this application is using nohup tool which comes preinstalled in many linux distro but check it before running this application that nohup is installed using:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>>  nohup --version</code></pre>
+            </div>
+        </ul>
+        <p>or install it if not installed using:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>>  sudo apt update</code></pre>
+                <pre><code>>>  sudo apt install coreutils</code></pre>
+            </div>
+          </ul>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="options">
+      <header>Options</header>
+      <article class="main-article">
+        <h4>1. Deauth Detector, Evil Twin Detector , Clonned Wifi Detector: </h4>
+        <p>You can select this option by pressing '0' after running the application. In this option, application detect deauthentication attack, Evil Twin attack or Clonned wifi attack on selected network. After selecting this option, You need to select the network adapter for detect these attack and the mode of this network adapter will be changed to monitor mode if its mode is not monitor mode. Then, application will check for nearby wifi networks and show them to select your target network. Application then detect the above mentioned attacks on selected network and notify when any attack detected.</p>
+        <ul>
+          <li>Deauthentication Attack Detection</li>
+          <li>Evil Twin Attack Detection</li>
+          <li>Clonned Wifi Detection</li>
+        </ul>
+        
+        <h4>2. Arp Spoofing and MITM Detector: </h4>
+        <p>You can select this option by pressing '1' after running the application. In this option, application detect arp Spoofing attack and man in the middle attack in selected network on your device. After selecting this option, You need to select the network adapter for detect these attack and the mode of this network adapter should me managed mode. Also, you be connected to your target network in which you want to detect above mentioned attacks. Application will check for gateway ip and mac address of network you are connected to. Application then detect the above mentioned attacks in selected network on your device and notify when any attack detected.</p>
+        <ul>
+          <li>Arp Spoofing Attack Detection</li>
+          <li>(MITM) Man in the Middle Attack Detection</li>
+        </ul>
+        
+        <h4>3. Detect All including both 1 and 2: </h4>
+        <p>You can select this option by pressing '2' after running the application. In this option, application detect deauthentication attack, Evil Twin attack, Clonned Wifi attack, arp Spoofing attack and man in the middle attack in selected network. After selecting this option, You need to select the 2 network adapter for detecting these attack and the mode of one network adapter will be converted to monitor mode to detect deauthentication, evil twin and clonned wifi attacks. The second network adapter should be in managed mode and should be connected to target or selected network.Then, application will check for nearby wifi networks and show them to select your target network. Application will check for gateway ip and mac address of network you are connected to using second network adapter. Application then detect the above mentioned attacks in selected network and notify when any attack detected.</p>
+        <p><b>[Note]</b> You cannot select same network adapter for both in this option. As, one network adapter will be in monitor mode and other will be in managed mode for proper working.</p>
+        <ul>
+          <li>Deauthentication Attack Detection</li>
+          <li>Evil Twin Attack Detection</li>
+          <li>Clonned Wifi Detection</li>
+          <li>Arp Spoofing Attack Detection</li>
+          <li>(MITM) Man in the Middle Attack Detection</li>
+        </ul>
+      
+      </article>
+    </section>
+
+    <section class="main-section" id="install-use">
+      <header>Installation and Usage</header>
+      <article class="main-article">
+        <p>After installing the requirements using "requirements.txt". Run the program using following command:</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> sudo python3 main.py</code></pre>
+            </div>
+        </ul>
+        <h3>Usage of service version:</h3>
+        <p>There will be three options after running the application:</p>
+        <h4>1. Setup the configurations for Wireless Attacks Detection Service:</h4>
+        <p>You can select this option by pressing '0' after running the application. In this option, application will amke configurations for the service. It this condifuration, you will specify which attacks you want the wireless protect service to detect. Also, specify the network adapters and other informations required for it.</p>
+        <h4>2. Start the Wireless Attacks Detection Service (First make configurations using first option...):</h4>
+        <p>You can select this option by pressing '1' after running the application. In this option, application will start the wireless protect service to detect the attacks in accordance with the configurations you made using first option.</p>
+        <p><b>Note:</b> Before starting the wireless protect service make sure you have made the configurations using first option. It will we required only one time to configure afterward it will choose that configurations automatically. You can change the configurations again using the first option.</p>
+        <h4>3. Stop all running Wireless Attacks Detection Services:</h4>
+        <p>You can select this option by pressing '2' after running the application. In this option, application will stop the wireless protect service if running.</p>
+        </article>
+    </section>
+    <section class="main-section" id="features">
+      <header>Features</header>
+      <article class="main-article">
+        <p>When any of the attack is detected. The application will have below features to allert you.</p>
+        <ul>
+          <li>Allert Message on terminal</li>
+          <li>Send System Notifications</li>
+        </ul>
+        <p><b>Note: </b> In service version of wireless protect the allert message will be stored in output.log that will be created in application directory.</p>
+        </article>
+    </section>
+
+
+
+
+  </main>
+
