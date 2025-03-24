@@ -103,10 +103,10 @@ button {
     content: "►";
     font-size: var(--font-size-s);
     transition: transform 0.3s ease;
-    position: absolute; /* Position the arrow absolutely */
-    right: 10px; /* Move the arrow to the right edge */
-    top: 50%; /* Center the arrow vertically */
-    transform: translateY(-50%); /* Adjust vertical alignment */
+    position: absolute; 
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
 }
 
 .dropdown-item:hover > a::after {
@@ -580,6 +580,9 @@ background-image: url("../images/img-4.jpg");
 background-image: url("../images/img-5.jpg");
 }
 
+.slider-wrapper .slider-item:nth-child(6):before {
+    background-image: url("../images/img-6.jpg");
+}
 
 
 .slider-wrapper .slider-item .slide-content {
