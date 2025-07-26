@@ -64,6 +64,9 @@
   #main-doc .main-section header {
     font-size: 2rem;
     padding: 1rem 0;
+    color: #cc0400;
+    text-align: center;
+    text-decoration: underline;
   }
   
   #main-doc .main-section .main-article {
@@ -194,4 +197,9 @@ a {
       justify-content: space-around;
     }
   
+  }
+
+  .player {
+    aspect-ratio: 16/9;
+    width: 100%;
   }
