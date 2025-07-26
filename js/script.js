@@ -2,9 +2,7 @@ const navLinks = document.querySelectorAll(".nav-menu .nav-link");
 const dropdownitems = document.querySelectorAll(".dropdown .dropdown-item");
 const menuOpenButton = document.querySelector("#menu-open-button");
 const menuCloseButton = document.querySelector("#menu-close-button");
-const sliderControls = document.querySelector(".slider-controls");
-const sliderTabs = sliderControls.querySelectorAll(".slider-tab");
-const sliderIndicator = sliderControls.querySelector(".slider-indicator");
+
 
 
 menuOpenButton.addEventListener("click", () => {
@@ -17,51 +15,45 @@ menuCloseButton.addEventListener("click", () => menuOpenButton.click());
 navLinks.forEach(link => {
   link.addEventListener("click", ()=> {if (!link.textContent.includes("DOCUMENTATION")) {
     menuOpenButton.click(); }})
-})
+});
 
 dropdownitems.forEach(dropdownitem => {
   dropdownitem.addEventListener("click", ()=> menuOpenButton.click())
-})
+});
 
-// Update the indicator
-const updateIndicator = (tab, index) => {
-  document.querySelector(".slider-tab.current")?.classList.remove("current");
-  tab.classList.add("current");
 
-  sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
-  sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`;
-
-  // Calculate the scroll position and scroll smoothly
-  const scrollLeft = sliderTabs[index].offsetLeft - sliderControls.offsetWidth / 2 + sliderTabs[index].offsetWidth / 2;
-  sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
-}
-
-// Initialize swiper instance
-const swiper = new Swiper(".slider-container", {
-  effect: "fade",
-  speed: 1300,
-  autoplay: { delay: 4000 },
+/// Slider code:
+new Swiper(".wrapper", {
+  loop: true,
+  spaceBetween: 30,
+  // Autoplay
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+  // Pagination bullets
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+  },
+  // Navigation arrows
   navigation: {
-    prevEl: "#slide-prev",
-    nextEl: "#slide-next",
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
-  on: {
-    // Update indicator on slide change
-    slideChange: () => {
-      const currentTabIndex = [...sliderTabs].indexOf(sliderTabs[swiper.activeIndex]);
-      updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+  // Responsive breakpoints
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
     },
-    reachEnd: () => swiper.autoplay.stop(),
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 4,
+    },
   },
 });
 
-// Update the slide on tab click
-sliderTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => {
-    swiper.slideTo(index);
-    updateIndicator(tab, index);
-  });
-});
-
-updateIndicator(sliderTabs[0], 0);
-window.addEventListener("resize", () => updateIndicator(sliderTabs[swiper.activeIndex], 0));
