@@ -203,3 +203,23 @@ a {
     aspect-ratio: 16/9;
     width: 100%;
   }
+
+  .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .button-link:hover {
+    background-color: #0056b3;
+  }
+
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
