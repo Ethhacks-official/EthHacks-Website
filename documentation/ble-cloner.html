@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/documentation-style.css">
+  <title>BLE Cloner</title>
+  <link rel="icon" type="image/png" href="../images/logo60px.png">
+</head>
+
+<body>
+  <header id="main-header">
+    <nav id="navbar">
+      <h1>BLE Cloner</h1>
+      <ul>
+        <li class="nav-link"><a href="#introduction">Introduction</a></li>
+        <li class="nav-link"><a href="#requirements">Hardware Requirements</a></li>
+        <li class="nav-link"><a href="#install">Installation</a></li>
+        <li class="nav-link"><a href="#use">Usage</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <article class="main-article">
+        <p>A esp32 microcontroller based BLE Beacons cloner that uses esp32 device to scan for nearby BLE Beacons and than clone and advertise exactly similar BLE Beacons and behave like similar BLE Device. If you want to contribute to this project, feel free to contact by mailing to 'siayam@ethhacks.net'. Also, This tool is completely for educational purposes.</p>
+        <ul>
+          <li>Build using ESP-IDF v6</li>
+          <li>Tested On: Esp32 Wroom</li>
+          <li>Firmware Flashing Tool: Esptool</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="requirements">
+      <header>Hardware Requirements</header>
+      <article class="main-article">
+        <ul>
+          <li>An ESP32 board.</li>
+          <li>USB cable - USB A / micro USB B.</li>
+          <li>Computer running Windows, Linux, or macOS.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="install">
+      <header>Installation</header>
+      <article class="main-article">
+        <p>For Flashing Ethhacks BLE Cloner, use Esptool. To install Esptool, first install python in your computer. Then, to install Esptool use below command.</p>
+        <ul>
+            <div class="code-container">
+                <pre><code>>> pip install esptool</code></pre>
+            </div>
+        </ul>
+        <p>After install Esptool you can use below command to flash Ethhacks BLE Cloner:</p>
+            <ul>
+            <div class="code-container">
+                <pre><code>>> python -m esptool --chip esp32 -b 460800 --before default_reset --after hard_reset write_flash --flash_mode dio --flash_size 4MB --flash_freq 40m 0x1000 bootloader.bin 0x8000 partition-table.bin 0x10000 ethhacks_ble_cloner.bin 0x210000 storage.bin</code></pre>
+            </div>
+        </ul>
+        <p>Note: Change Chip, Baud Rate and Flash Size in above command according to your esp32 microcontroller. But make sure Ethhacks BLE Cloner will not work for flash size less than 4MB.</p>
+        </article>
+    </section>
+    <section class="main-section" id="use">
+      <header>Usage</header>
+      <article class="main-article">
+        <ul>
+          <li>After flashing the Ethhacks BLE Cloner using Installation instruction and powering the esp32 microcontroller, you will "MyESP32AP" access point in on your computer or mobile phone.</li>
+          <li>Connect to it using "password" as password for that access point.</li>
+        </ul>
+        <img src="../images/1.png" alt="MyESP32AP password" class="responsive-img">
+        <ul>
+          <li>Open the web browser and visit "http://192.168.4.1" </li>
+        </ul>
+        <img src="../images/2.png" alt="BLE Cloner Web UI" class="responsive-img">
+        <ul>
+          <li>Scan for nearby ble beacon devices by selecting time for scanning and clicking on "Scan Now" button.</li>
+          <li>Scan devices will be show as list with corresponding numbers, if not, click on "Refresh List" button. </li>
+        </ul>
+        <img src="../images/3.png" alt="BLE Cloner Web UI" class="responsive-img">
+        <ul>
+          <li>You can delete devices by providing corresponding number of that device and clicking on "Delete" button. Or if want to clear complete list, click on "Clear All" button.</li>
+          <li>In order to start the clone of a device present in scanned devices list, provide its corresponding number and click on "Start Beacon" button. Your Esp32 MIcrocontroller will start advertising exactly similar BLE beacons and behave like similar device.</li>
+        </ul>
+        </article>
+    </section>
+
+  </main>
